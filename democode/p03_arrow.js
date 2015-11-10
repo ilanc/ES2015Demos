@@ -1,6 +1,6 @@
 (function () {
 	"use strict";
-	console.log("##Arrow:");
+	console.log("##Arrow");
 	
 	
 	// another way to define functions
