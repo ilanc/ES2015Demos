@@ -1,33 +1,42 @@
-// a slow function that returns data
-function findGuy() {
-	sleep(100); // simulate a slow operation
-	let guy = {
-		isBad: Math.random() < 0.5
-	}
-	return guy
-}
+(function () {
+	"use strict";
+	console.log("##Promise");
 
-// create a promise
-let badGuyPromise = new Promise(
-		function(resolve, reject) {
-			let guy = findGuy()
-			if (guy.isBad) {
-				resolve(guy)
-			} else {
-				reject('the guy is ok')
-			}
+	// a slow function that returns data
+	function findGuy() {
+		sleep(100); // simulate a slow operation
+		let guy = {
+			isBad: Math.random() < 0.5
 		}
+		return guy
+	}
+
+	// create a promise
+	let badGuyPromise = new Promise(
+			function(resolve, reject) {
+				let guy = findGuy()
+				if (guy.isBad) {
+					resolve("the guy is bad")
+				} else {
+					reject('the guy is ok')
+				}
+			}
 	)
 
-badGuyPromise
-	.then(badGuy => console.warn(badGuy))
-	.catch(msg => console.info(msg))
+	badGuyPromise
+			.then(badGuy => console.log(badGuy))
+			.catch(msg => console.log(msg))
 
 
-// do not do this at home
-function sleep(milliseconds) {
- 	let start = new Date().getTime()
- 	while (true) {
- 		if ((new Date().getTime() - start) > milliseconds) break
- 	}
-}
+	// do not do this at home
+	function sleep(milliseconds) {
+		let start = new Date().getTime()
+		while (true) {
+			if ((new Date().getTime() - start) > milliseconds) break
+		}
+	}
+
+
+})();
+
+

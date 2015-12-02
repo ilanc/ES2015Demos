@@ -4,7 +4,7 @@
     console.log('##Strings');
     
     
-    // multiline string
+    // multi-line string
     var a=`hello
     world`;
     console.log(a);
@@ -18,7 +18,7 @@
     console.log(greeting);
     console.log("John","Doe");
 
-    throw new Error("Custom Error, testing error handling");
+    //throw new Error("Custom Error, testing error handling");
 
 
 })();

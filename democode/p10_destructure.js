@@ -1,29 +1,37 @@
-var [a, b, c] = [1, 2, 'w']   // a=1, b=2, c='w'
+(function () {
+	"use strict";
+	console.log("##Destructure");
 
-// swap:
-var a=10
-var b=20
-[a, b] = [b, a]   // a=20, b=10
+	var [a, b, c] = [1, 2, 'w'] ;  // a=1, b=2, c='w'
 
-// fields in function parameters
-var book = {
-	id: 99,
-	title: 'Stranger in a Strange Land',
-	author: 'Robert Heinlein',
-	year: 1961
-}
+	// swap:
+	var a=10;
+	var b=20;
+	[a, b] = [b, a];   // a=20, b=10
 
-var xx = {
-	id: 42
-}
+	// fields in function parameters
+	var book = {
+		id: 99,
+		title: 'Stranger in a Strange Land',
+		author: 'Robert Heinlein',
+		year: 1961
+	};
 
-function getId({id}) {
-	return id
-}
+	var xx = {
+		id: 42
+	};
 
-function formattedTitle({title, author}) {
-	return title + ' by ' + author
-}
+	function getId({id}) {
+		return id
+	}
 
-console.log(getId(book))
-console.log(formattedTitle(book))
+	function formattedTitle({title, author}) {
+		return title + ' by ' + author
+	}
+
+	console.log(getId(book));
+	console.log(formattedTitle(book));
+
+})();
+
+

@@ -1,26 +1,29 @@
-// step1: have an object
-let odds = {}
+//nonstandard don't include
+(function () {
+	"use strict";
+	console.log("##Iterator");
 
-// step2: define a property with key Symbol.iterator which has a function value
-// notice how the key Symbol.iterator is a computed value
-odds[Symbol.iterator] = function() {
-	const max=10
-	let odd = -1
-	// step3: the function returns an object
-	return {
-		// step4: the object has a function next
-		next: function() {
-			odd += 2
-			if (odd > max) {
-				return {done:true} // terminate the iterator
+	let fibonacci = {
+		[Symbol.iterator]() {
+			let pre = 0, cur = 1;
+			return {
+				next() {
+					[pre, cur] = [cur, pre + cur];
+					return { done: false, value: cur }
+				}
 			}
-			return {done:false, value:odd} // next value
 		}
 	}
-}
 
-// notice that odds are lazily evaluated
+	for (var n of fibonacci) {
+		// truncate the sequence at 1000
+		if (n > 1000)
+			break;
+		console.log(n);
+	}
 
-for (odd of odds) {
-	console.log(odd)
-}
+
+
+})();
+
+
