@@ -1,8 +1,17 @@
+//if console is not available until browser dev tools open initialize object
+//and log function
+if (!window.console) window.console = {};
+if (!window.console.log) window.console.log = function () { };
+if (!window.console.error) window.console.error = function () { };
+
+
 (function () {
     "use strict";
     window.totalerrors = 0;
 
-    var baseLogFunction = console.log;
+
+    //var baseLogFunction = console.log;
+    var baseLogFunction = Function.prototype.bind.call(console.log, console);
     console.log = function(){
         baseLogFunction.apply(console, arguments);
 
@@ -35,7 +44,8 @@
             log.appendChild(node);
             window.totalerrors++;
             var totalErrorsHeading = document.querySelector("#totalerrors");
-            totalErrorsHeading.innerText = window.totalerrors;
+            setTextContent(totalErrorsHeading, window.totalerrors);
+
         }
     }
 
@@ -58,5 +68,11 @@
         console.error("JavaScript error: " + message + " on line " +
             linenumber + " for " + url);
     };
+
+    function setTextContent(element, text) {
+        while (element.firstChild!==null)
+            element.removeChild(element.firstChild); // remove all existing content
+        element.appendChild(document.createTextNode(text));
+    }
 
 })();
