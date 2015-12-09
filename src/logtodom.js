@@ -45,6 +45,9 @@ if (!window.console.error) window.console.error = function () { };
             window.totalerrors++;
             var totalErrorsHeading = document.querySelector("#totalerrors");
             setTextContent(totalErrorsHeading, window.totalerrors);
+            if (totalerrors > 0){
+                document.querySelector('#total-errors-container').removeAttribute('style');
+            }
 
         }
     }
