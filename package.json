@@ -8,7 +8,7 @@
     "build": "npm run clean && npm run build:js && npm run build:css && npm run build:html",
     "build:html": "cp src/index.html dist/index.html",
     "build:css": "cp src/site.css dist/site.css",
-    "clean": "rm -r dist/*",
+    "clean": "rm -rf dist/*",
     "build:js": "babel src --out-dir dist"
   },
   "repository": {
